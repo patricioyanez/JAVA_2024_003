@@ -30,5 +30,8 @@ public class Principal {
         System.out.println("Masa    : " + pizza2.getMasa());
         System.out.println("Tamaño  : " + pizza2.getTamano());
         System.out.println("Precio  : " + pizza2.getPrecio());
+        
+        
+        //Lee la ppt 1.2.1
     }
 }
