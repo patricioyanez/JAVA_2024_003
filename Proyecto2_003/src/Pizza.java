@@ -16,6 +16,32 @@ public class Pizza {
     {
         return nombre;
     }
-    // metodos personalizados
     
+    public String getTamano() {
+        return tamano;
+    }
+
+    public void setTamano(String tamano) {
+        this.tamano = tamano;
+    }
+
+    public String getMasa() {
+        return masa;
+    }
+
+    public void setMasa(String masa) {
+        this.masa = masa;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+    
+    
+    // metodos personalizados
+
 }
