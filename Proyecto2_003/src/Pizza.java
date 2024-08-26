@@ -43,5 +43,12 @@ public class Pizza {
     
     
     // metodos personalizados
-
+    public void imprimirDatos()
+    {
+        System.out.println("== Datos de la Pizza ==");
+        System.out.println("Nombre  : " + this.getNombre());
+        System.out.println("Masa    : " + getMasa());
+        System.out.println("Tamaño  : " + this.tamano);
+        System.out.println("Precio  : " + precio);
+    }
 }

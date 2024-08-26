@@ -31,7 +31,21 @@ public class Principal {
         System.out.println("Tamaño  : " + pizza2.getTamano());
         System.out.println("Precio  : " + pizza2.getPrecio());
         
+        Pizza pizza3 = new Pizza();
+        pizza3.setNombre("Hawaina");
+        pizza3.setMasa("Borde Queso");
+        pizza3.setTamano("grande");
+        pizza3.setPrecio(15000);
         
+        pizza3.imprimirDatos();
+        
+        Pizza pizza4 = new Pizza();
+        pizza4.setNombre("Rodeo");
+        pizza4.setMasa("delgada");
+        pizza4.setTamano("personal");
+        pizza4.setPrecio(5000);
+        
+        pizza4.imprimirDatos();
         //Lee la ppt 1.2.1
     }
 }
