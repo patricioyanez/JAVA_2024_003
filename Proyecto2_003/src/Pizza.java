@@ -6,7 +6,22 @@ public class Pizza {
     private String masa;
     private int precio;
     // constructores
-    
+    public Pizza()
+    {
+        this.nombre = "";
+        this.tamano = "";
+        this.masa = "";
+        this.precio = 0;
+        System.out.println("Pizza creada");
+    }
+    public Pizza(String nombre, String tamano,String masa,int precio)
+    {
+        this.nombre = nombre;        
+        this.tamano = tamano;
+        this.masa = masa;
+        this.precio = precio;
+
+    }
     // getter y setter
     public void setNombre(String nombre)
     {

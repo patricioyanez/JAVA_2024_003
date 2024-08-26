@@ -47,5 +47,15 @@ public class Principal {
         
         pizza4.imprimirDatos();
         //Lee la ppt 1.2.1
+        
+        Pizza pizza5 = new Pizza("Pollo bbq", "mediana", "gruesa", 14000);
+//        pizza5.imprimirDatos();
+        pizza5.setPrecio(15000);
+        pizza5.imprimirDatos();
+        
+        // Ejercicio: Crear una pizza "5 quesos" usando constructor 
+        // con parametros e imprimir los datos
+        Pizza pizza6 = new Pizza("5 quesos", "familiar", "Masa piedra", 16000);
+        pizza6.imprimirDatos();
     }
 }
