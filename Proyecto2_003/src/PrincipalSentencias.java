@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class PrincipalSentencias {
     public static void main(String[] args) {
@@ -37,5 +38,15 @@ public class PrincipalSentencias {
         else
             System.out.println("Todo es falso");
         
+        // Ejercicio:
+        // preguntar al usuario un numero y enviar 
+        // si es natural o no
+        Scanner leerTeclado = new Scanner(System.in);
+        System.out.print("Ingrese un numero: ");
+        int valor = leerTeclado.nextInt();
+        if(valor >= 0)
+            System.out.println("Es un numero natural");
+        else
+            System.out.println("No es un numero natural");
     }
 }
