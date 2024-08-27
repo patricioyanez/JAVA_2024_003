@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PrincipalSentencias {
+public class PrincipalSentenciaIf {
     public static void main(String[] args) {
         int numero = 0;
         
@@ -48,5 +48,36 @@ public class PrincipalSentencias {
             System.out.println("Es un numero natural");
         else
             System.out.println("No es un numero natural");
+        
+        
+        // Ejercicio:
+        // Verificar si el numero es positivo, negativo o neutro.
+        System.out.print("Ingrese un numero 2: ");
+        int valor2 = leerTeclado.nextInt();
+        
+        if(valor2 == 0)
+            System.out.println("El numero es neutro");
+        else if(valor2 > 0)
+            System.out.println("El numero es positivo");
+        else
+            System.out.println("El numero es negativo");
+        
+        // solicitar la edad y determinar el rango etario
+        // niño, adolescente, adulto y 3ra edad
+        
+        System.out.print("Ingrese su edad: ");
+        int edad = leerTeclado.nextInt();
+        
+        if (edad < 12) {
+            System.out.println("Niño");            
+        }
+        else if (edad < 18) {
+            System.out.println("Adolescente");
+        }
+        else if (edad < 65) {
+            System.out.println("Adulto");
+        }
+        else
+            System.out.println("Es adulto mayor");
     }
 }
