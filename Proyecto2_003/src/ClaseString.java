@@ -51,5 +51,9 @@ public class ClaseString {
         String nroRut = rut.substring(0, 8);
         System.out.println("Nro Rut: " + nroRut);
         
+        // Ejercio 5:
+        // solicitar el rut, eliminar los espacios y puntos
+        // y mostrar solo el DV. 
+        
     }
 }
