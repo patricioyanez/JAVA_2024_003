@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class ClaseString {
     public static void main(String[] args) {
@@ -54,6 +55,12 @@ public class ClaseString {
         // Ejercio 5:
         // solicitar el rut, eliminar los espacios y puntos
         // y mostrar solo el DV. 
+        Scanner leerTeclado = new Scanner(System.in);
+        System.out.print("Ingrese su rut: ");
+        String rut2 = leerTeclado.next();
+        rut2 = rut2.trim().replace(".", "").replace("-", "");
+        int largo = rut2.length();
+        System.out.println("DV: " + rut2.substring(largo-1, largo) );
         
     }
 }
