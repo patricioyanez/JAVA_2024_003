@@ -24,7 +24,7 @@ public class Principal {
                 cliente.setCorreo("fasdfa@mail.com");
                 cliente.setCodigoArea(32);
                 cliente.setTelefono(89798465);
-                cliente.setEsNuevo(false);
+                cliente.setEsNuevo(true);
                 
                 vehiculo.setPatente("asdf60");
                 vehiculo.setMarca("Kia");
@@ -38,14 +38,23 @@ public class Principal {
             {
                 System.out.println("****** Mostrar Datos *******");
                 System.out.println(vehiculo.imprimirDatos());
+                System.out.println(cliente.imprimirDatos());
             }
             else if(opcion == 3)
             {
+                System.out.println("****** Cobro de servicio ********");
+                System.out.print("Ingrese monto: ");
+                int valor = leerTeclado.nextInt();
                 
+                vehiculo.setCostoServicio(valor);
+                vehiculo.descuento();
+                System.out.println("==> Valor a pagar: $" + vehiculo.getCostoServicio());
             }
             else if(opcion == 4)
-            {
-                
+            {                
+                System.out.println("****** Envio de correo********");
+                vehiculo.enviarCorreo();
+                System.out.println("Correo enviado");
             }
             else if(opcion == 5)
             {

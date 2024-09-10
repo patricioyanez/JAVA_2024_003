@@ -93,7 +93,7 @@ public class Cliente {
                 "\nCodigo de Area   = " + codigoArea + 
                 "\nTelefono         = " + telefono + 
                 "\nCorreo           = " + correo + 
-                "\nEs Nuevo         = " + esNuevo;
+                "\nEs Nuevo         = " + (esNuevo?"Si":"No");
     }
     
     
