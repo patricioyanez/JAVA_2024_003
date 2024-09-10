@@ -70,7 +70,7 @@ public class Vehiculo {
         if(kilometraje < 0 || kilometraje > 500000)
         {
             System.out.println("|================> ERROR: El kilometraje esta fuera del rango.");
-            this.patente = "";
+            this.kilometraje = 0;
         }
         else
             this.kilometraje = kilometraje;
