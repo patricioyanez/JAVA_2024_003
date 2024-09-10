@@ -75,7 +75,13 @@ public class Cliente {
 
     
     public String imprimirDatos() {
-        return "Cliente{" + "rut=" + rut + ", nombre=" + nombre + ", codigoArea=" + codigoArea + ", telefono=" + telefono + ", correo=" + correo + ", esNuevo=" + esNuevo + '}';
+        return  "\n|============ Cliente ============|" + 
+                "\nRut              = " + rut + 
+                "\nNombre           = " + nombre + 
+                "\nCodigo de Area   = " + codigoArea + 
+                "\nTelefono         = " + telefono + 
+                "\nCorreo           = " + correo + 
+                "\nEs Nuevo         = " + esNuevo;
     }
     
     

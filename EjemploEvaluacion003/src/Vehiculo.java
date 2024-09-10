@@ -72,5 +72,22 @@ public class Vehiculo {
         this.costoServicio = costoServicio;
     }
     // metodos personalizados...
-    
+
+    public String imprimirDatos() {
+        return  "\n|============ Vehículo ============|" + 
+                "\nPatente          = " + patente + 
+                "\nMarca            = " + marca + 
+                "\nModelo           = " + modelo + 
+                "\nKilometraje      = " + kilometraje + 
+                "\nCosto de Servicio= " + costoServicio + 
+                "\nCliente          = " + cliente.getNombre();
+    }
+    public void descuento()
+    {
+        
+    }
+    public void enviarCorreo()
+    {
+        
+    }
 }
