@@ -38,7 +38,13 @@ public class Cliente {
     }
 
     public void setRut(String rut) {
-        this.rut = rut;
+        if(rut.trim().length() == 0 )
+        {
+            System.out.println("|================> ERROR: El rut no es válido.");
+            this.rut = "";
+        }
+        else
+            this.rut = rut;
     }
 
     public String getNombre() {
@@ -46,7 +52,13 @@ public class Cliente {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if(nombre.trim().length() == 0 )
+        {
+            System.out.println("|================> ERROR: El nombre no fue especificado.");
+            this.nombre = "";
+        }
+        else
+            this.nombre = nombre;
     }
 
     public int getCodigoArea() {

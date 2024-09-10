@@ -37,7 +37,13 @@ public class Vehiculo {
     }
 
     public void setPatente(String patente) {
-        this.patente = patente;
+        if(patente.trim().length() != 6)
+        {
+            System.out.println("|================> ERROR: El formato de la patente no es válido.");
+            this.patente = "";
+        }
+        else
+            this.patente = patente;
     }
 
     public String getMarca() {
@@ -61,7 +67,13 @@ public class Vehiculo {
     }
 
     public void setKilometraje(int kilometraje) {
-        this.kilometraje = kilometraje;
+        if(kilometraje < 0 || kilometraje > 500000)
+        {
+            System.out.println("|================> ERROR: El kilometraje esta fuera del rango.");
+            this.patente = "";
+        }
+        else
+            this.kilometraje = kilometraje;
     }
 
     public int getCostoServicio() {
