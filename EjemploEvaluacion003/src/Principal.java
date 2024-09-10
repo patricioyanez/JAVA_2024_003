@@ -4,7 +4,7 @@ public class Principal {
         Scanner leerTeclado = new Scanner(System.in);
         int opcion = 0;
         Cliente cliente = new Cliente();
-        Vehiculo v1 = new Vehiculo();
+        Vehiculo vehiculo = new Vehiculo();
         
         while(true)
         {
@@ -19,11 +19,25 @@ public class Principal {
             
             if(opcion == 1)
             {
+                cliente.setRut("500000-5");
+                cliente.setNombre("Juan");
+                cliente.setCorreo("fasdfa@mail.com");
+                cliente.setCodigoArea(32);
+                cliente.setTelefono(89798465);
+                cliente.setEsNuevo(false);
                 
+                vehiculo.setPatente("asdf60");
+                vehiculo.setMarca("Kia");
+                vehiculo.setModelo("Soul");
+                vehiculo.setKilometraje(50000);
+                vehiculo.setCostoServicio(0);
+                vehiculo.setCliente(cliente);
+                System.out.println("**** Datos Creados ****");
             }
             else if(opcion == 2)
             {
-                
+                System.out.println("****** Mostrar Datos *******");
+                System.out.println(vehiculo.imprimirDatos());
             }
             else if(opcion == 3)
             {
