@@ -102,9 +102,9 @@ public class Vehiculo {
     public void enviarCorreo()
     {
         String mensaje = "Estimado: " + cliente.getNombre() +
-                        "\nLe informamos que su vehiculo patente " + this.patente +
+                        "\nLe informamos que su vehiculo patente " + this.patente.toUpperCase()  +
                         "\nYa esta listo para retirar." +
-                        "\nSu correo es: " + cliente.getCorreo();
+                        "\nSu correo es: " + cliente.getCorreo().toUpperCase();
         
         System.out.println(mensaje);
     }
