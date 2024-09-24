@@ -56,6 +56,8 @@ public class Principal {
         }
         nombres.remove(3);
         nombres.remove("Ana");
+        
+        nombres.set(1, "Francisca");
         System.out.println("===> Lista actualizada");
         for(String nombre: nombres)
         {
