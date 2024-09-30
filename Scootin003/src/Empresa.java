@@ -1,7 +1,6 @@
-
 import java.util.ArrayList;
 
-
+// clase gestora
 public class Empresa {
     ArrayList<Empleado> empleados;
     
@@ -9,7 +8,7 @@ public class Empresa {
     {
         empleados = new ArrayList<Empleado>();
     }
-    
+
     public boolean agregar(Empleado empleado)
     {
         return empleados.add(empleado);
