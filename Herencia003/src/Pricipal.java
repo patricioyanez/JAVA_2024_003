@@ -9,8 +9,10 @@ public class Pricipal {
 
         System.out.println("===== Listado de cliente =====");
         System.out.println(cliente);
+        cliente.calcularEdad();
         System.out.println("\n===== Listado de Empleados =====");
         System.out.println(empleado);
+        empleado.calcularEdad();
     }
     
 }

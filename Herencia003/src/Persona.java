@@ -59,6 +59,10 @@ public class Persona {
                 "\nDireccion        = " + direccion;
     }
     
-    
+    public void calcularEdad()
+    {
+        int edad = 2024 - anioNacimiento;
+        System.out.println("La edad de la persona es: " + edad);
+    }
     
 }

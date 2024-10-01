@@ -36,6 +36,12 @@ public class Cliente extends Persona {
                 "\nEs Vip       = " + (esVip?"Si":"No") + 
                 "\nLinea Crédito= " + lineaCredito;
     }
+
+    @Override
+    public void calcularEdad() {
+        int edad = 2024 - this.getAnioNacimiento();
+        System.out.println("El edad del cliente es: " + edad);
+    }
     
     
     
