@@ -13,6 +13,10 @@ public class Pricipal {
         System.out.println("\n===== Listado de Empleados =====");
         System.out.println(empleado);
         empleado.calcularEdad();
+        
+        empleado.calcularSueldo();
+        
+        empleado.calcularSueldo(20000);
     }
     
 }

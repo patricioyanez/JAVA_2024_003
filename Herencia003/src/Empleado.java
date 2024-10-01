@@ -37,12 +37,35 @@ public class Empleado extends Persona{
                 "\nSueldo = " + sueldo + 
                 "\nCargo  = " + cargo;
     }
-
+// ejemplo de sobre escritura
     @Override
     public void calcularEdad() {
         int edad = 2024 - this.getAnioNacimiento();
         System.out.println("El edad del empleado es: " + edad);
     }
+
+    //sobre carga
+    public void calcularSueldo()
+    {
+        System.out.println("==== Liquidación de sueldo ====");
+        System.out.println("Bruto   : " + sueldo);
+        System.out.println("AFP     : " + (sueldo*.1));
+        System.out.println("Salud   : " + (sueldo*.07));
+        int liquido = sueldo - (int)((sueldo*.1) + (sueldo*.07));
+        System.out.println("Liquido : " + liquido);
+    }
+    public void calcularSueldo(int descuento)
+    {
+        System.out.println("==== Liquidación de sueldo ====");
+        System.out.println("Bruto       : " + sueldo);
+        System.out.println("AFP         : " + (sueldo*.1));
+        System.out.println("Salud       : " + (sueldo*.07));
+        System.out.println("Descuesto   : " + descuento);
+        int liquido = sueldo - (int)(descuento + (sueldo*.1) + (sueldo*.07));
+        System.out.println("Liquido : " + liquido);
+    }
+    
+    // ppt 2.2.1 
     
     
 }
