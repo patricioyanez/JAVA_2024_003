@@ -37,5 +37,11 @@ public class Ropa extends Producto{
                 "\nColor    = " + color;
     }
     
-
+    public void ajustarTalla(String nuevaTalla)
+    {
+        if("s m l xl xxl xxxl xxxxl".contains(nuevaTalla))
+            this.talla = nuevaTalla;
+        else
+            System.out.println("***La talla no es válida");
+    }
 }
