@@ -43,7 +43,11 @@ public class Empleado extends Persona{
         int edad = 2024 - this.getAnioNacimiento();
         System.out.println("El edad del empleado es: " + edad);
     }
-
+    
+    public void calcularEdad(int anio) {
+        int edad = anio - this.getAnioNacimiento();
+        System.out.println("El edad del empleado es: " + edad);
+    }
     //sobre carga
     public void calcularSueldo()
     {
