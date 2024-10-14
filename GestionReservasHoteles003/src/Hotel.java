@@ -23,7 +23,10 @@ public class Hotel {
         ArrayList<Habitacion> temp = new ArrayList<Habitacion>();
         for (Habitacion habitacion : this.habitaciones) {
             if(habitacion.getDisponible())
+            {
                 temp.add(habitacion);
+                System.out.println(habitacion);
+            }
         }
         return temp;
     }
