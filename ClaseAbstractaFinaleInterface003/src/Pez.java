@@ -8,13 +8,13 @@ public class Pez extends Animal {
 
     @Override
     public int grabar() {
-        System.out.println("Los datos del Pez fueron guardados");
+        System.out.println("Los datos del PEz fueron guardados");
         return 1;
     }
 
     @Override
     public void limpiar() {
-        System.out.println("Los datos del ave fueron limpiados");
+        System.out.println("Los datos del PEz fueron limpiados");
     }
 
     @Override
