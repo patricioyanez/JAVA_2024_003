@@ -6,7 +6,7 @@ contine el ArrayList
 Generar metodos CRUD
 */
 public class Taller {
-    ArrayList<Vehiculo> listado = new ArrayList<Vehiculo>();
+    private ArrayList<Vehiculo> listado = new ArrayList<Vehiculo>();
     public boolean agregar(Vehiculo vehiculo)
     {
         // ejercicio 31: validar que patente no existe para 
