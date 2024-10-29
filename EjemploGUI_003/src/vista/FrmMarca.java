@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorMarca;
 import javax.swing.JOptionPane;
 import modelo.Marca;
 
@@ -200,6 +201,19 @@ public class FrmMarca extends javax.swing.JFrame {
             marca.setHabilitado(chkHabilitado.isSelected());
             
             // instanciar contralador y entregar el obj marca
+            ControladorMarca cm = new ControladorMarca();
+            boolean respuesta = cm.agregar(marca);
+            
+            if(respuesta)
+            {
+                JOptionPane.showMessageDialog(this, "Datos Guardados");
+                btnLimpiar.doClick();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Error al guardar");
+            }
+            
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
