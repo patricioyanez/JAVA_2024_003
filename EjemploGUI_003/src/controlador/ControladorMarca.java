@@ -57,5 +57,23 @@ public class ControladorMarca {
         }
         return marca; 
     }
-    
+    public boolean eliminar(int id)
+    {
+        try {
+            Conexion con = new Conexion();
+            Connection cx = con.obtenerConexion();
+            String sql = "DELETE FROM MARCA WHERE ID = ?";
+            PreparedStatement st;
+            st = cx.prepareStatement(sql);
+            st.setInt(1, id);
+
+            st.executeUpdate();
+            st.close();
+            cx.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return false;        
+    }
 }

@@ -74,6 +74,11 @@ public class FrmMarca extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -217,6 +222,32 @@ public class FrmMarca extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(txtId.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "No especifico el ID");
+        }
+        else
+        {
+            int id = Integer.parseInt(txtId.getText());
+            ControladorMarca cm = new ControladorMarca();
+            Marca marca = cm.buscarPorId(id);
+            
+            if(marca == null)
+            {
+                JOptionPane.showMessageDialog(this, "Id no encontrado");
+            }
+            else
+            {
+                txtId.setText("" + marca.getId());
+                txtNombre.setText(marca.getNombre());
+                chkHabilitado.setSelected(marca.getHabilitado());
+            }
+            
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
