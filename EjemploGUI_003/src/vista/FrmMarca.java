@@ -6,7 +6,9 @@
 package vista;
 
 import controlador.ControladorMarca;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Marca;
 
 /**
@@ -89,6 +91,11 @@ public class FrmMarca extends javax.swing.JFrame {
         });
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,9 +108,21 @@ public class FrmMarca extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(table);
@@ -141,7 +160,7 @@ public class FrmMarca extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -286,6 +305,36 @@ public class FrmMarca extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+        ControladorMarca cm = new ControladorMarca();
+        ArrayList<Marca> listado = cm.listarTodo();
+        
+        DefaultTableModel dtm = (DefaultTableModel)table.getModel();
+        dtm.setRowCount(0); // limpia la tabla
+        
+        for (Marca m : listado) {
+            dtm.addRow(new Object[]{m.getId(), 
+                                    m.getNombre(), 
+                                    m.getHabilitado()
+                                    }
+                        );
+        }
+        
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int fila = table.getSelectedRow();
+        
+        int id = 0;
+        id = Integer.parseInt( table.getValueAt(fila, 0).toString());
+        txtId.setText(""+id);
+        txtNombre.setText(table.getValueAt(fila, 1).toString());
+        chkHabilitado.setSelected(table.getValueAt(fila, 2).
+                                    toString().equals("true"));
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
