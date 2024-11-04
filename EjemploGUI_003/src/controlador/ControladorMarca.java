@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Marca;
@@ -75,5 +76,33 @@ public class ControladorMarca {
             System.out.println("Error: " + ex.getMessage());
         }
         return false;        
+    }
+    
+    public ArrayList<Marca> listarTodo()
+    {
+        ArrayList<Marca> listado = new ArrayList<Marca>();
+        try {
+            Conexion con = new Conexion();
+            Connection cx = con.obtenerConexion();
+            String sql = "SELECT id, nombre, habilitado FROM MARCA";
+            PreparedStatement st;
+            st = cx.prepareStatement(sql);
+            
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next())
+            {
+                Marca marca = new Marca();
+                marca.setId(rs.getInt("id"));
+                marca.setNombre(rs.getString("nombre"));
+                marca.setHabilitado(rs.getInt("habilitado")==1);
+                listado.add(marca);
+            }
+            st.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return listado; 
     }
 }
