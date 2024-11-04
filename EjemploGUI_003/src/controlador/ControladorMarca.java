@@ -2,6 +2,7 @@ package controlador;
 import BDD.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,5 +30,32 @@ public class ControladorMarca {
         return false;        
     }
     
+    public Marca buscarPorId(int id)
+    {
+        Marca marca = null;
+        try {
+            Conexion con = new Conexion();
+            Connection cx = con.obtenerConexion();
+            String sql = "SELECT id, nombre, habilitado FROM MARCA WHERE id = ?";
+            PreparedStatement st;
+            st = cx.prepareStatement(sql);
+            st.setInt(1, id);
+            
+            ResultSet rs = st.executeQuery();
+            
+            if(rs.next())
+            {
+                marca = new Marca();
+                marca.setId(id);
+                marca.setNombre(rs.getString("nombre"));
+                marca.setHabilitado(rs.getInt("habilitado")==1);
+            }
+            st.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return marca; 
+    }
     
 }
