@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.Marca;
 
 public class ControladorMarca {
@@ -16,11 +14,32 @@ public class ControladorMarca {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "INSERT INTO MARCA (NOMBRE, HABILITADO) VALUES (?,?)";
+            String sql = "INSERT INTO Marca (NOMBRE, HABILITADO) VALUES (?,?)";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             st.setString(1, marca.getNombre());
             st.setInt(2, marca.getHabilitado()?1:0);
+            st.executeUpdate();
+            st.close();
+            cx.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return false;        
+    }
+    
+    public boolean actualizar(Marca marca)
+    {
+        try {
+            Conexion con = new Conexion();
+            Connection cx = con.obtenerConexion();
+            String sql = "UPDATE Marca SET nombre=?, habilitado=? WHERE id=?";
+            PreparedStatement st;
+            st = cx.prepareStatement(sql);
+            st.setString(1, marca.getNombre());
+            st.setInt(2, marca.getHabilitado()?1:0);
+            st.setInt(3, marca.getId());
             st.executeUpdate();
             st.close();
             cx.close();
@@ -37,7 +56,7 @@ public class ControladorMarca {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "SELECT id, nombre, habilitado FROM MARCA WHERE id = ?";
+            String sql = "SELECT id, nombre, habilitado FROM Marca WHERE id = ?";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             st.setInt(1, id);
@@ -63,7 +82,7 @@ public class ControladorMarca {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "DELETE FROM MARCA WHERE ID = ?";
+            String sql = "DELETE FROM Marca WHERE ID = ?";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             st.setInt(1, id);
@@ -84,7 +103,7 @@ public class ControladorMarca {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "SELECT id, nombre, habilitado FROM MARCA";
+            String sql = "SELECT id, nombre, habilitado FROM Marca";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             

@@ -212,13 +212,7 @@ public class FrmMarca extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         // validaciones
-        if(txtId.getText().trim().length() == 0)
-        {
-            JOptionPane.showMessageDialog(this, 
-                    "Debe especificar el id");
-            txtId.requestFocus();
-        }
-        else if(txtNombre.getText().trim().length() == 0)
+        if(txtNombre.getText().trim().length() == 0)
         {
             JOptionPane.showMessageDialog(this, 
                     "Debe especificar el nombre");
@@ -230,7 +224,7 @@ public class FrmMarca extends javax.swing.JFrame {
             // a un obj tipo Marca
             Marca marca = new Marca();
             
-            int id = Integer.parseInt(txtId.getText());
+            int id = Integer.parseInt("0" + txtId.getText());
             marca.setId(id);
             
             marca.setNombre(txtNombre.getText().toUpperCase());
@@ -238,12 +232,18 @@ public class FrmMarca extends javax.swing.JFrame {
             
             // instanciar contralador y entregar el obj marca
             ControladorMarca cm = new ControladorMarca();
-            boolean respuesta = cm.agregar(marca);
+            boolean respuesta = false;
+            
+            if(marca.getId()== 0)
+                respuesta = cm.agregar(marca);
+            else
+                respuesta = cm.actualizar(marca);
             
             if(respuesta)
             {
                 JOptionPane.showMessageDialog(this, "Datos Guardados");
                 btnLimpiar.doClick();
+                btnListarActionPerformed(null);
             }
             else
             {
@@ -296,6 +296,7 @@ public class FrmMarca extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(this, "Id eliminado");
                 btnLimpiar.doClick();
+                btnListarActionPerformed(null);
             }
             else
             {
