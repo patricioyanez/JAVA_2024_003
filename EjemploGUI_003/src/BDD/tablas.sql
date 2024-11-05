@@ -1,7 +1,7 @@
 CREATE TABLE Marca(
     id          int primary key auto_increment,
-    nombre      varchar(100) not null,
-    habilitado  int not null,
+    nombre      varchar(100)    not null,
+    habilitado  int             not null,
     unique(nombre)
 );
 
@@ -9,12 +9,12 @@ CREATE TABLE Marca(
 -- crear CRUD para la tabla categoria
 CREATE TABLE Categoria(
     id          int primary key auto_increment,
-    nombre      varchar(100) not null,
-    habilitado  int not null,
+    nombre      varchar(100)    not null,
+    habilitado  int             not null,
     unique(nombre)
 );
 
-
+-- crear CRUD para la tabla Producto
 CREATE TABLE Producto(
     id          int primary key auto_increment,
     idMarca     int             not null,
