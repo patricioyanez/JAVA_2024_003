@@ -5,20 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.Marca;
+import modelo.Producto;
 
 public class ControladorProducto {
     
-    public boolean agregar(Marca marca)
+    public boolean agregar(Producto producto)
     {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "INSERT INTO Marca (NOMBRE, HABILITADO) VALUES (?,?)";
+            String sql = "INSERT INTO Producto (IDMARCA, IDCATEGORIA, CODIGO, DESCRIPCION, STOCK, PRECIOCOSTO, PRECIOVENTA) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
-            st.setString(1, marca.getNombre());
-            st.setInt(2, marca.getHabilitado()?1:0);
+            st.setInt(1, producto.getIdMarca());
+            st.setInt(2, producto.getIdCategoria());
+            st.setLong(3, producto.getCodigo());
+            st.setString(4, producto.getDescripcion());
+            st.setInt(5, producto.getStock());
+            st.setInt(6, producto.getPrecioCosto());
+            st.setInt(7, producto.getPrecioVenta());
             st.executeUpdate();
             st.close();
             cx.close();
@@ -29,17 +34,22 @@ public class ControladorProducto {
         return false;        
     }
     
-    public boolean actualizar(Marca marca)
+    public boolean actualizar(Producto producto)
     {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "UPDATE Marca SET nombre=?, habilitado=? WHERE id=?";
+            String sql = "UPDATE Producto SET idMarca=?, idCategoria=?, codigo=?, descripcion=?, stock=?, precioCosto=?, precioVenta=? WHERE id=?";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
-            st.setString(1, marca.getNombre());
-            st.setInt(2, marca.getHabilitado()?1:0);
-            st.setInt(3, marca.getId());
+            st.setInt(1, producto.getIdMarca());
+            st.setInt(2, producto.getIdCategoria());
+            st.setLong(3, producto.getCodigo());
+            st.setString(4, producto.getDescripcion());
+            st.setInt(5, producto.getStock());
+            st.setInt(6, producto.getPrecioCosto());
+            st.setInt(7, producto.getPrecioVenta());
+            st.setInt(8, producto.getId());
             st.executeUpdate();
             st.close();
             cx.close();
@@ -50,13 +60,13 @@ public class ControladorProducto {
         return false;        
     }
     
-    public Marca buscarPorId(int id)
+    public Producto buscarPorId(int id)
     {
-        Marca marca = null;
+        Producto producto = null;
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "SELECT id, nombre, habilitado FROM Marca WHERE id = ?";
+            String sql = "SELECT idMarca, idCategoria, codigo, descripcion, stock, precioCosto, precioVenta FROM Producto WHERE id = ?";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             st.setInt(1, id);
@@ -65,24 +75,30 @@ public class ControladorProducto {
             
             if(rs.next())
             {
-                marca = new Marca();
-                marca.setId(id);
-                marca.setNombre(rs.getString("nombre"));
-                marca.setHabilitado(rs.getInt("habilitado")==1);
+                producto = new Producto();
+                producto.setId(id);
+                producto.setIdMarca(rs.getInt("idMarca"));
+                producto.setIdCategoria(rs.getInt("idCategoria"));
+                producto.setCodigo(rs.getLong("codigo"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setPrecioCosto(rs.getInt("precioCosto"));
+                producto.setPrecioVenta(rs.getInt("precioVenta"));
+                
             }
             st.close();
             cx.close();
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
-        return marca; 
+        return producto; 
     }
     public boolean eliminar(int id)
     {
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "DELETE FROM Marca WHERE ID = ?";
+            String sql = "DELETE FROM Producto WHERE ID = ?";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             st.setInt(1, id);
@@ -97,13 +113,13 @@ public class ControladorProducto {
         return false;        
     }
     
-    public ArrayList<Marca> listarTodo()
+    public ArrayList<Producto> listarTodo()
     {
-        ArrayList<Marca> listado = new ArrayList<Marca>();
+        ArrayList<Producto> listado = new ArrayList<Producto>();
         try {
             Conexion con = new Conexion();
             Connection cx = con.obtenerConexion();
-            String sql = "SELECT id, nombre, habilitado FROM Marca";
+            String sql = "SELECT id, idMarca, idCategoria, codigo, descripcion, stock, precioCosto, precioVenta FROM Producto";
             PreparedStatement st;
             st = cx.prepareStatement(sql);
             
@@ -111,11 +127,16 @@ public class ControladorProducto {
             
             while(rs.next())
             {
-                Marca marca = new Marca();
-                marca.setId(rs.getInt("id"));
-                marca.setNombre(rs.getString("nombre"));
-                marca.setHabilitado(rs.getInt("habilitado")==1);
-                listado.add(marca);
+                Producto producto = new Producto();
+                producto.setId(rs.getInt("id"));
+                producto.setIdMarca(rs.getInt("idMarca"));
+                producto.setIdCategoria(rs.getInt("idCategoria"));
+                producto.setCodigo(rs.getLong("codigo"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setPrecioCosto(rs.getInt("precioCosto"));
+                producto.setPrecioVenta(rs.getInt("precioVenta"));
+                listado.add(producto);
             }
             st.close();
             cx.close();
