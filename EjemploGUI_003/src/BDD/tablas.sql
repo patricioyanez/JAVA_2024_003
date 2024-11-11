@@ -26,9 +26,9 @@ CREATE TABLE Producto(
     precioVenta int             not null,
     UNIQUE(codigo),
     FOREIGN KEY (idMarca)
-        REFERENCE Marca(id),
+        REFERENCES Marca(id),
     FOREIGN KEY (idCategoria)
-        REFERENCE Categoria(id)
+        REFERENCES Categoria(id)
 );
 
 
