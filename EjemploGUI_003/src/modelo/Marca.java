@@ -49,4 +49,10 @@ public class Marca {
         this.nombre = "";
         this.habilitado = false;  
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
 }
