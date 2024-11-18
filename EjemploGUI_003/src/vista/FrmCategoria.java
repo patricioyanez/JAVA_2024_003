@@ -5,6 +5,7 @@
  */
 package vista;
 
+import Validaciones.Validacion;
 import controlador.ControladorCategoria;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -217,6 +218,18 @@ public class FrmCategoria extends javax.swing.JFrame {
                     "Debe especificar el nombre");
             txtNombre.requestFocus();
         }
+        else if(txtNombre.getText().trim().length() > 100)
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El nombre excede la cantidad de caracteres permitidos");
+            txtNombre.requestFocus();
+        }
+        else if(!Validacion.soloLetras(txtNombre.getText()))
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El nombre contiene caracteres no validos");
+            txtNombre.requestFocus();
+        }
         else
         {
             // transferir los datos del formulario 
@@ -259,6 +272,12 @@ public class FrmCategoria extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "No especifico el ID");
         }
+        else if(!Validacion.soloNumeros(txtId.getText()))
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El ID contiene caracteres no validos");
+            txtId.requestFocus();
+        }
         else
         {
             int id = Integer.parseInt(txtId.getText());
@@ -284,6 +303,12 @@ public class FrmCategoria extends javax.swing.JFrame {
         if(txtId.getText().trim().length() < 1)
         {
             JOptionPane.showMessageDialog(this, "No especifico el ID");
+        }
+        else if(!Validacion.soloNumeros(txtId.getText()))
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El ID contiene caracteres no validos");
+            txtId.requestFocus();
         }
         else
         {
