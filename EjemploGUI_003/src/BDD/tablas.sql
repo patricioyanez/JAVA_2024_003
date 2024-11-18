@@ -5,7 +5,6 @@ CREATE TABLE Marca(
     unique(nombre)
 );
 
-
 -- crear CRUD para la tabla categoria
 CREATE TABLE Categoria(
     id          int primary key auto_increment,
