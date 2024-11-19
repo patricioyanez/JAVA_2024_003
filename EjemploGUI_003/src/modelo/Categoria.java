@@ -46,4 +46,11 @@ public class Categoria {
         this.nombre = "";
         this.habilitado = false;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
 }

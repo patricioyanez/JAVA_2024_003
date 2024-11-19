@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorCategoria;
 import controlador.ControladorMarca;
 
 /**
@@ -83,6 +84,11 @@ public class FrmProducto extends javax.swing.JFrame {
 
         btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnGrabar.setBackground(new java.awt.Color(255, 0, 51));
         btnGrabar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -94,6 +100,8 @@ public class FrmProducto extends javax.swing.JFrame {
         btnEliminar.setText("Eliminar");
 
         btnListar.setBackground(new java.awt.Color(51, 153, 0));
+        btnListar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(255, 255, 255));
         btnListar.setText("Listar");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -221,7 +229,20 @@ public class FrmProducto extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         cmbMarca.setModel(new ControladorMarca().llenarComboBox());
+        cmbCategoria.setModel(new ControladorCategoria().llenarComboBox());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtId.setText("");
+        cmbMarca.setSelectedIndex(0);
+        cmbCategoria.setSelectedIndex(0);
+        txtDescripcion.setText("");
+        txtStock.setText("");
+        txtPrecioCosto.setText("");
+        txtPrecioVenta.setText("");
+        txtId.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments

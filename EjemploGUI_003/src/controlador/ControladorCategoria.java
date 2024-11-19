@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import modelo.Categoria;
 
 public class ControladorCategoria {
@@ -123,5 +124,35 @@ public class ControladorCategoria {
             System.out.println("Error: " + ex.getMessage());
         }
         return listado; 
+    }
+    
+    public javax.swing.DefaultComboBoxModel llenarComboBox()
+    {
+        Vector listado = new Vector();
+        listado.add(new Categoria(0, "Seleccionar", true));
+        try {
+            Conexion con = new Conexion();
+            Connection cx = con.obtenerConexion();
+            String sql = "SELECT id, nombre, habilitado FROM Categoria " +
+                            " WHERE habilitado=1 ORDER BY nombre ";
+            PreparedStatement st;
+            st = cx.prepareStatement(sql);
+            
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next())
+            {
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNombre(rs.getString("nombre"));
+                categoria.setHabilitado(rs.getInt("habilitado")==1);
+                listado.add(categoria);
+            }
+            st.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return new javax.swing.DefaultComboBoxModel(listado); 
     }
 }
