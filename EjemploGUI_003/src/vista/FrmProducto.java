@@ -280,6 +280,10 @@ public class FrmProducto extends javax.swing.JFrame {
             {
                 this.seleccionarPorId(cmbMarca, producto.getIdMarca());
                 this.seleccionarPorId(cmbCategoria, producto.getIdCategoria());
+                txtDescripcion.setText(producto.getDescripcion());
+                txtStock.setText("" + producto.getStock());
+                txtPrecioCosto.setText("" + producto.getPrecioCosto());
+                txtPrecioVenta.setText("" + producto.getPrecioVenta());
             }
             
         }
