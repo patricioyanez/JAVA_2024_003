@@ -5,8 +5,13 @@
  */
 package vista;
 
+import Validaciones.Validacion;
 import controlador.ControladorCategoria;
 import controlador.ControladorMarca;
+import controlador.ControladorProducto;
+import javax.swing.JOptionPane;
+import modelo.Marca;
+import modelo.Producto;
 
 /**
  *
@@ -81,6 +86,11 @@ public class FrmProducto extends javax.swing.JFrame {
 
         btnBuscar.setBackground(new java.awt.Color(102, 255, 102));
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
         btnLimpiar.setText("Limpiar");
@@ -244,6 +254,56 @@ public class FrmProducto extends javax.swing.JFrame {
         txtId.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(txtId.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "No especifico el ID");
+        }
+        else if(!Validacion.soloNumeros(txtId.getText()))
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El ID contiene caracteres no validos");
+            txtId.requestFocus();
+        }
+        else
+        {
+            int id = Integer.parseInt(txtId.getText());
+            ControladorProducto cp = new ControladorProducto();
+            Producto producto = cp.buscarPorId(id);
+            
+            if(producto == null)
+            {
+                JOptionPane.showMessageDialog(this, "Id no encontrado");
+            }
+            else
+            {
+                this.seleccionarPorId(cmbMarca, producto.getIdMarca());
+                this.seleccionarPorId(cmbCategoria, producto.getIdCategoria());
+            }
+            
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+    public void seleccionarPorId(javax.swing.JComboBox<?> comboBox, int id){
+        javax.swing.DefaultComboBoxModel<?> model = (javax.swing.DefaultComboBoxModel<?>) comboBox.getModel();
+        comboBox.setSelectedIndex(0);
+        for (int i = 0; i < model.getSize(); i++) {
+            Object element = model.getElementAt(i);
+
+            try {
+                int elementId = (int) element.getClass().getMethod("getId").invoke(element);
+                if (elementId == id)
+                {
+                    comboBox.setSelectedIndex(i);
+                    return;
+                }
+            } catch (NoSuchMethodException | SecurityException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }        
+        }
+    }
     /**
      * @param args the command line arguments
      */
