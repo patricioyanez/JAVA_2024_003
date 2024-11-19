@@ -103,10 +103,10 @@ public class ControladorProducto {
             st = cx.prepareStatement(sql);
             st.setInt(1, id);
 
-            st.executeUpdate();
+            int resultado = st.executeUpdate();
             st.close();
             cx.close();
-            return true;
+            return resultado == 1;
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         }

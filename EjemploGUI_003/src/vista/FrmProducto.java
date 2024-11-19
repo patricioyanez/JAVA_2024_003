@@ -104,10 +104,20 @@ public class FrmProducto extends javax.swing.JFrame {
         btnGrabar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGrabar.setForeground(new java.awt.Color(255, 255, 255));
         btnGrabar.setText("Grabar");
+        btnGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(102, 102, 102));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnListar.setBackground(new java.awt.Color(51, 153, 0));
         btnListar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -275,6 +285,7 @@ public class FrmProducto extends javax.swing.JFrame {
             if(producto == null)
             {
                 JOptionPane.showMessageDialog(this, "Id no encontrado");
+                btnLimpiarActionPerformed(null);
             }
             else
             {
@@ -288,6 +299,63 @@ public class FrmProducto extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(txtId.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "No especifico el ID");
+        }
+        else if(!Validacion.soloNumeros(txtId.getText()))
+        {
+            JOptionPane.showMessageDialog(this, 
+                    "El ID contiene caracteres no validos");
+            txtId.requestFocus();
+        }
+        else
+        {
+            int id = Integer.parseInt(txtId.getText());
+            ControladorProducto cp = new ControladorProducto();
+            
+            boolean resultado = cp.eliminar(id);
+            
+            if(resultado)
+            {
+                JOptionPane.showMessageDialog(this, "El producto fue eliminado.");
+                btnLimpiarActionPerformed(null);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "El id NO fue encontrado.");
+            }
+            
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
+        // TODO add your handling code here:
+        
+        // validar
+        
+        if(cmbMarca.getSelectedIndex() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una marca.");
+            cmbMarca.requestFocus();
+        }
+        else if(cmbCategoria.getSelectedIndex() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una categoria.");
+            cmbCategoria.requestFocus();
+        }
+        else
+        {
+            Marca m = (Marca)cmbMarca.getSelectedItem();
+            JOptionPane.showMessageDialog(this, "Datos marca:" + 
+                    m.getId() + " " + m.getNombre());
+            
+        }
+        
+    }//GEN-LAST:event_btnGrabarActionPerformed
     public void seleccionarPorId(javax.swing.JComboBox<?> comboBox, int id){
         javax.swing.DefaultComboBoxModel<?> model = (javax.swing.DefaultComboBoxModel<?>) comboBox.getModel();
         comboBox.setSelectedIndex(0);
