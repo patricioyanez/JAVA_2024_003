@@ -16,14 +16,16 @@ CREATE TABLE Cargo
 CREATE TABLE Persona
 (
     idPersona           int             primary key auto_increment,
-    idCargo             int             null,
+    idCargo             int             null,  -- colaboracion
     rut                 int             not null,
     digito              varchar(1)      not null,
     nombre              varchar(50)     not null,
     apellido            varchar(50)     not null,
 	direccion			varchar(100)	not null,
-    sueldo              int             null,
-	esCliente			int 			not null,
+	
+    sueldo              int             null,  -- empleado
+	descuento			int				null, --  cliente
+
 	habilitado			int 			not null,
     UNIQUE(rut),
     FOREIGN KEY(idCargo)
@@ -34,7 +36,7 @@ CREATE TABLE Persona
 CREATE TABLE Produccion
 (
     idProduccion        int             primary key auto_increment,
-    idSello           	int             not null,
+    idSello           	int             not null, -- colaboracion
     nombre             	varchar(100)	not null,
     anioEstreno      	int             not null,
     formato             varchar(100)    not null,
