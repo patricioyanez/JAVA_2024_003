@@ -41,4 +41,16 @@ public class Empresa {
         }
         return false;
     }
+    
+    public ArrayList<Empleado> buscarEmpleadoMasculino()
+    {
+        
+        ArrayList<Empleado> listado = new ArrayList<Empleado>();
+        for(Empleado empleado: empleados)
+        {
+            if(empleado.getGenero().equals("Masculino"))
+                listado.add(empleado);
+        }
+        return listado;
+    }
 }
